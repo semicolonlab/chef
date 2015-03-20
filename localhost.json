@@ -1,0 +1,10 @@
+{
+    "nginx": {
+        "post":80
+    },
+    "run_list":[
+        "yum::epel",
+//        "iptables",
+        "nginx"
+    ]
+}
