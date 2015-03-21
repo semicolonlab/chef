@@ -3,7 +3,7 @@
         "port":8080
     },
     "run_list":[
-        "add_repo",
-        "nginx"
+        "nginx",
+        "rbenv"
     ]
 }
