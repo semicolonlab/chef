@@ -1,0 +1,61 @@
+#
+# Cookbook Name:: rbenv
+# Recipe:: default
+#
+# Copyright 2015, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
+
+git "~/" do                                                                                                                                                         
+  repository "git://github.com/sstephenson/rbenv.git"
+  reference "master"
+  action :sync
+end
+
+git "~/" do  
+  repository "git://github.com/sstephenson/ruby-build.git"
+  reference "master"
+  action :sync
+end
+
+bash "install_ruby_build" do
+  cwd "/usr/local/ruby-build"
+  code <<-EOH
+    ./install.sh
+  EOH
+end
+
+template "rbenv.sh" do
+  path "/etc/profile.d/rbenv.sh"
+  owner "root"
+  group "root"
+  mode "0644"
+  source "rbenv.sh.erb"
+end
+
+%w{make gcc zlib-devel openssl-devel readline-devel ncurses-devel gdbm-devel libffi-devel tk-devel libyaml-devel}.each do |pkg|
+  yum_package pkg do
+    action :install
+  end 
+end
+
+execute "rbenv install 2.1.0" do
+  command "rbenv install 2.1.0"
+  action :run
+end
+
+execute "rbenv global 2.1.0" do
+  command "rbenv global 2.1.0"
+  action :run
+end
+
+execute "rbenv global 2.1.0" do
+  command "rbenv global 2.1.0"
+  action :run
+end
+
+execute "rbenv rehash" do
+  command "rbenv rehash"
+  action :run
+end  
