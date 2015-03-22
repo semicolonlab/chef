@@ -4,6 +4,7 @@
     },
     "run_list":[
         "nginx",
-        "rbenv"
+        "rbenv",
+	"mysql"
     ]
 }
