@@ -9,7 +9,7 @@
 
 cookbook_file "/etc/yum.repos.d/nginx.repo" do
   source "nginx.repo"
-  mode 00644
+  mode 0644
 end
 
 package "nginx" do
